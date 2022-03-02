@@ -5,7 +5,7 @@
     <session-factory>
 
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/gestiontrainers</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/managementtrainer</property>
         <property name="connection.username">root</property>
         <property name="connection.password">admin</property>
         <property name="connection.autocommit">true</property>
@@ -15,8 +15,6 @@
         <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
-        <!-- Set the current session context -->
-
         <!-- Set the current session context -->
         <!-- <property name="current_session_context_class">thread</property>-->
          <!-- Drop and re-create the database schema on startup -->
@@ -29,6 +27,9 @@
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.timeout">1800</property>
         <property name="hibernate.c3p0.validate">1800</property>
+
+
+
 
     </session-factory>
 </hibernate-configuration>
