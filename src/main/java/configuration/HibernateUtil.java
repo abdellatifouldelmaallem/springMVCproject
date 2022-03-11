@@ -23,7 +23,7 @@ public class HibernateUtil {
     @Autowired
     private ApplicationContext context;
 
-    @Bean(name = "LocalSessionFactoryBean")
+    @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
         factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));

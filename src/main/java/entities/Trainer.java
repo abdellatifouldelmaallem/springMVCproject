@@ -1,5 +1,6 @@
 package entities;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -9,9 +10,9 @@ import java.io.Serializable;
 @DiscriminatorValue(value = "trainerType")
 public class Trainer extends User {
 
-    @Column(name="speciality", length=40, nullable=false, unique=false)
+    @Column(name="speciality", length=40, nullable=true, unique=false)
     private String speciality;
-    @Column(name="phoneNamber", length=20, nullable=false, unique=false)
+    @Column(name="phoneNamber", length=40, nullable=true, unique=false)
     private Long phoneNamber;
 
 
@@ -51,6 +52,6 @@ public class Trainer extends User {
     return "Trainer{" +
             "speciality='" + speciality + '\'' +
             ", phoneNamber=" + phoneNamber +
-            '}';
+            "} " + super.toString();
   }
 }

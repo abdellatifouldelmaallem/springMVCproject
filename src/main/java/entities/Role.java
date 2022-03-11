@@ -1,9 +1,5 @@
 package entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,6 +9,7 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRole;
+
     @Column(name="typeOfUser", length=20, nullable=false, unique=false)
     private String typeOfUser;
 

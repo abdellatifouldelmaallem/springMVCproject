@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class RoleAdmin {
+public class AdminService {
     @Autowired
     private IAdmin adminDAO;
 

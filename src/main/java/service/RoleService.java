@@ -24,6 +24,10 @@ public class RoleService {
         roleDao.deleteRole(id);
     }
 
+    public  Role getRoleById(Long id){
+       return roleDao.getRole(id);
+    }
+
     public List<Role> getAllRole(){
         List<Role> roleList = roleDao.getAllRole();
         return roleList;

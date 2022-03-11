@@ -1,8 +1,5 @@
 package entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,41 +12,42 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUser;
     @Column(name="fullName", length=50, nullable=false, unique=false)
     private String fullName;
     @Column(name="email", length=40, nullable=false, unique=false)
     private String email;
     @Column(name="passWord", length=50, nullable=false, unique=false)
     private String passWord;
-    @OneToOne
-    private Role role;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="role_id", nullable=false)
+    private Role rol;
 
 
     public User() {
     }
 
     public User(Long id, String fullName, String email, String passWord ,Role role) {
-        this.id = id;
+        this.idUser = id;
         this.fullName = fullName;
         this.email = email;
         this.passWord = passWord;
-        this.role = role;
+        this.rol = role;
     }
 
     public User(String fullName, String email, String passWord,Role role) {
         this.fullName = fullName;
         this.email = email;
         this.passWord = passWord;
-        this.role = role;
+        this.rol = role;
     }
 
     public Long getId() {
-        return id;
+        return idUser;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idUser = id;
     }
 
     public String getFullName() {
@@ -77,10 +75,21 @@ public class User implements Serializable {
     }
 
     public void setRole(Role role) {
-        this.role = role;
+        this.rol = role;
     }
 
-    public Role getRole() {
-        return role;
+        public Role getRole() {
+        return rol;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + idUser +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", role=" + rol +
+                '}';
     }
 }

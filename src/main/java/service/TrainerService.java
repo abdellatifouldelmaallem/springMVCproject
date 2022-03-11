@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class RoleTrainer {
+public class TrainerService {
     @Autowired
     private ITrainer trainerDAO;
 

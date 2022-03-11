@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>update Trainer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>trainer Management System</h1>
+    <hr>
+    <h2>update trainer</h2>
+
+    <form  th:action="@{/updateTrainer}" th:object="${trainer}" method="POST">
+
+
+        <input type="hidden"  th:value="${trainer.getId()}" name="idUser"/>
+
+        <label >entre Full Name</label>
+        <input type="text" th:field="*{fullName}" th:value="${trainer.fullName}"  name="fullName" id="fullName" placeholder="trainer full name" class="form-control mb-4 col-4"/>
+
+        <label > entre Email</label>
+        <input type="text" th:field="*{email}" th:value="${trainer.email}" name="email" id="email" placeholder="trainer email" class="form-control mb-4 col-4"/>
+
+        <label >entre pass word</label>
+        <input type="text" th:field="*{passWord}" th:value="${trainer.passWord}" name="passWord" id="passWord"  placeholder="trainer passWord" class="form-control mb-4 col-4"/>
+
+        <label >Role</label>
+        <select   class="form-control mb-4 col-4">
+            <option th:value="${trainer}">trainer</option>
+        </select>
+
+
+        <label >entre Speciality</label>
+        <input type="text" th:field="*{speciality}" th:value="${trainer.speciality}"  name="speciality" id="speciality"  placeholder="trainer speciality" class="form-control mb-4 col-4"/>
+
+        <label >entre phone Namber</label>
+        <input type="text" th:field="*{phoneNamber}" th:value="${trainer.phoneNamber}"  name="phoneNamber" id="phoneNamber  "  placeholder="trainer phoneNamber" class="form-control mb-4 col-4" />
+
+        <button type="submit" class="btn btn-info col-2"> update trainer</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
+</div>
+</body>
+
+</html>

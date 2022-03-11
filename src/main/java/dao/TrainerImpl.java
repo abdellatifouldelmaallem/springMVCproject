@@ -1,5 +1,8 @@
 package dao;
 import entities.Trainer;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -23,7 +26,9 @@ public class TrainerImpl implements ITrainer{
 
     @Override
     public void updateTrainer(Trainer trainer) {
-        transactionManager.getSessionFactory().getCurrentSession().update(trainer);
+        Session currentSession = transactionManager.getSessionFactory().getCurrentSession();
+        // Trainer t = currentSession.getReference(Trainer.class, trainer.getId());
+        currentSession.merge(trainer);
     }
 
     @Override
@@ -43,7 +48,10 @@ public class TrainerImpl implements ITrainer{
     @SuppressWarnings("unchecked")
     @Override
     public List<Trainer> getAllTrainer() {
-        List<Trainer> trainerList = transactionManager.getSessionFactory().getCurrentSession().createQuery("from Trainer").list();
+        String hql = "FROM User  WHERE role_id = 3";
+        Query query = transactionManager.getSessionFactory().getCurrentSession().createQuery(hql);
+        List<Trainer> trainerList = query.list();
+       // List<Trainer> trainerList = transactionManager.getSessionFactory().getCurrentSession().createQuery("from Trainer").list();
         return trainerList;
     }
 }

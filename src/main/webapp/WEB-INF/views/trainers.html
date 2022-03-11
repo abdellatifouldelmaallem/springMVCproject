@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>welcome page</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 align="center">Welcome Admin this is the list of trainers</h2>
+    <p align="center"><a th:href="@{/showNewTrainerForm}" class="btn btn-info">Add a Trainer</a></p>
+    <table class="table table-bordered table-sm">
+        <thead>
+        <tr>
+            <th>id of user</th>
+            <th>full name</th>
+            <th>email</th>
+            <th>paas word</th>
+            <th>Role</th>
+            <th>speciality</th>
+            <th>phone namber</th>
+            <th>action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="x : ${listTrainers}">
+            <td id="idUser" th:text="${x.getId()}"></td>
+            <td th:text="${x.fullName}"></td>
+            <td th:text="${x.email}"></td>
+            <td th:text="${x.passWord}"></td>
+            <td th:text="${x.getRole().getUser()}"></td>
+            <td th:text="${x.speciality}"></td>
+            <td th:text="${x.phoneNamber}"></td>
+             <td>
+                 <a th:href="@{/showEditTrainerForm/{id}(id=${x.getId()})}" ><i class="btn  btn-warning fa fa-edit" >Edit</i></a>
+                 <a th:href="@{/deleteTrainer/{id}(id=${x.getId()})}" ><i class="btn btn-danger fa fa-remove">Delete</i></a>
+             </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

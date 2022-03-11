@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add Trainer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+   </head>
+
+<body>
+<div class="container">
+    <h1>trainer Management System</h1>
+    <hr>
+    <h2>Save trainer</h2>
+
+    <form action="#" th:action="@{/saveTrainer}" th:object="${trainer}" method="POST"   >
+        <label >entre Full Name</label>
+        <input type="text" th:field="*{fullName}" placeholder="trainer full name" class="form-control mb-4 col-4">
+
+        <label > entre Email</label>
+        <input type="text" th:field="*{email}" placeholder="trainer email" class="form-control mb-4 col-4">
+
+        <label >entre pass word</label>
+        <input type="text" th:field="*{passWord}" placeholder="trainer passWord" class="form-control mb-4 col-4">
+
+
+        <label >Role</label>
+        <select   class="form-control mb-4 col-4">
+
+            <option th:each="test : ${listRole}"
+                    th:value="${test.getId()}"
+                    th:text="${test.getUser()}"></option>
+
+        </select>
+
+        <label >entre Speciality</label>
+        <input type="text" th:field="*{speciality}" placeholder="trainer speciality" class="form-control mb-4 col-4">
+
+        <label >entre phone Namber</label>
+        <input type="text" th:field="*{phoneNamber}" placeholder="trainer phoneNamber" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save trainer</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
+</div>
+</body>
+
+</html>
