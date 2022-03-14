@@ -51,7 +51,6 @@ public class TrainerImpl implements ITrainer{
         String hql = "FROM User  WHERE role_id = 3";
         Query query = transactionManager.getSessionFactory().getCurrentSession().createQuery(hql);
         List<Trainer> trainerList = query.list();
-       // List<Trainer> trainerList = transactionManager.getSessionFactory().getCurrentSession().createQuery("from Trainer").list();
         return trainerList;
     }
 }
