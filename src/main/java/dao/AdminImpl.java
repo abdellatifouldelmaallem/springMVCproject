@@ -38,8 +38,9 @@ public class AdminImpl implements IAdmin{
         String allAdmins = "FROM User as U WHERE  U.email = :email AND U.passWord = :passWord ";
         Query query = transactionManager.getSessionFactory().getCurrentSession().createQuery(allAdmins);
         query.setParameter(":email",email);
+        query.setParameter(":passWord ",passWord);
         List<Admin> adminList = query.list();
-        if (adminList!=null && admin.getPassWord().equals(passWord)){
+        if (adminList!=null){
             return AdminStatus = true;
         }
 
