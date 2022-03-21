@@ -2,6 +2,8 @@ package dao;
 
 import entities.Admin;
 import entities.Role;
+import entities.User;
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,17 +35,22 @@ public class AdminImpl implements IAdmin{
 
     @Override
     public Boolean login(String email, String passWord) {
-        Boolean AdminStatus = false;
-
-        String allAdmins = "FROM User as U WHERE  U.email = :email AND U.passWord = :passWord ";
-        Query query = transactionManager.getSessionFactory().getCurrentSession().createQuery(allAdmins);
-        query.setParameter(":email",email);
-        query.setParameter(":passWord ",passWord);
-        List<Admin> adminList = query.list();
-        if (adminList!=null){
-            return AdminStatus = true;
+        try {
+            String allAdmins = "FROM User U WHERE U.email=:email";
+            Query query = transactionManager.getSessionFactory().getCurrentSession().createQuery(allAdmins, User.class);
+            query.setParameter("email",email);
+            query.setMaxResults(1);
+            Admin admin = (Admin) query.getSingleResult();
+            return admin.getPassWord().equals(passWord);
+        } catch (Exception e){
+            return false;
         }
 
-        return AdminStatus;
+    }
+
+    @Override
+    public Admin findByEmail(String email) {
+        Admin admin = transactionManager.getSessionFactory().getCurrentSession().get(Admin.class,email);
+        return admin;
     }
 }

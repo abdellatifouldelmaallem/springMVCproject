@@ -22,4 +22,5 @@ public class WebServletConfiguration extends AbstractAnnotationConfigDispatcherS
         String arr[] = {"/"};
         return arr;
     }
+
 }
