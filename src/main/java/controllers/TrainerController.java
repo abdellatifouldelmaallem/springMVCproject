@@ -21,13 +21,13 @@ public class TrainerController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping("/trainers")
+    @RequestMapping("/admin/trainers")
     public String Trainers(Model model){
      model.addAttribute("listTrainers", trainerService.getAllTrainer());
      return "trainers";
     }
 
-    @GetMapping("/showNewTrainerForm")
+    @GetMapping("/admin/showNewTrainerForm")
     public String showNewTrainerForm(Model model) {
 
         Trainer trainer = new Trainer();
@@ -36,35 +36,35 @@ public class TrainerController {
         return "newTrainer";
     }
 
-    @PostMapping("/saveTrainer")
+    @PostMapping("/admin/saveTrainer")
     public String saveTrainer(@ModelAttribute("trainer") Trainer trainer) {
         Role role = roleService.getRoleById(3L);
         trainer.setRole(role);
         trainerService.RsaveTrainer(trainer);
-        return "redirect:/trainers";
+        return "redirect:/admin/trainers";
     }
 
-    @RequestMapping("/deleteTrainer/{id}")
+    @RequestMapping("/admin/deleteTrainer/{id}")
     public String deleteTrainer(@PathVariable(name = "id") Long id){
         trainerService.RdeleteTrainer(id);
-        return "redirect:/trainers";
+        return "redirect:/admin/trainers";
     }
 
-    @RequestMapping("/showEditTrainerForm/{id}")
+    @RequestMapping("/admin/showEditTrainerForm/{id}")
     public String editTrainer(@PathVariable(name = "id") Long id, Model model){
         Trainer trainer = trainerService.RgetById(id);
          model.addAttribute("trainer",trainer);
         return "edit_trainer";
     }
 
-    @PostMapping("/updateTrainer")
+    @PostMapping("/admin/updateTrainer")
     public String updateTrainer(@Valid Trainer trainer, HttpServletRequest req) {
         Long idUser = Long.parseLong(req.getParameter("idUser"));
         trainer.setId(idUser);
         Role role = roleService.getRoleById(3L);
         trainer.setRole(role);
         trainerService.Rupdate(trainer);
-        return "redirect:/trainers";
+        return "redirect:/admin/trainers";
     }
 
 
