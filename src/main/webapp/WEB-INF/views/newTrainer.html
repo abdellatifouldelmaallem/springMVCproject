@@ -18,12 +18,15 @@
     <form action="#" th:action="@{/admin/saveTrainer}" th:object="${trainer}" method="POST"   >
         <label >entre Full Name</label>
         <input type="text" th:field="*{fullName}" placeholder="trainer full name" class="form-control mb-4 col-4">
+        <label  class="sr-only" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">fullName Error</label>
 
         <label > entre Email</label>
         <input type="text" th:field="*{email}" placeholder="trainer email" class="form-control mb-4 col-4">
+        <label  class="sr-only" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</label>
 
         <label >entre pass word</label>
         <input type="text" th:field="*{passWord}" placeholder="trainer passWord" class="form-control mb-4 col-4">
+        <label  class="sr-only" th:if="${#fields.hasErrors('passWord')}" th:errors="*{passWord}">passWord Error</label>
 
 
         <label >Role</label>
@@ -33,17 +36,19 @@
 
         <label >entre Speciality</label>
         <input type="text" th:field="*{speciality}" placeholder="trainer speciality" class="form-control mb-4 col-4">
+        <label  class="sr-only" th:if="${#fields.hasErrors('speciality')}" th:errors="*{speciality}">speciality Error</label>
 
         <label >entre phone Namber</label>
         <input type="text" th:field="*{phoneNamber}" placeholder="trainer phoneNamber" class="form-control mb-4 col-4">
+        <label  class="sr-only" th:if="${#fields.hasErrors('phoneNamber')}" th:errors="*{phoneNamber}">phoneNamber Error</label>
 
-        <button type="submit" class="btn btn-info col-2"> Save trainer</button>
-    </form>
+         <button type="submit" class="btn btn-info col-2"> Save trainer</button>
+     </form>
 
-    <hr>
+     <hr>
 
-    <a th:href="@{/admin/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
-</div>
-</body>
+     <a th:href="@{/admin/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
+ </div>
+ </body>
 
-</html>
+ </html>

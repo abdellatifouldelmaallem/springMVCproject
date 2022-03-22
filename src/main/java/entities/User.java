@@ -21,15 +21,16 @@ public class User implements Serializable {
     @Column(name="fullName", length=50, nullable=false, unique=false)
     private String fullName;
 
-    @NotBlank(message = "email can not be empty")
+
     @Size(min=11, max=40)
     @Column(name="email", length=40, nullable=false, unique=false)
     private String email;
 
-    @NotBlank(message = "password can not be empty")
+
     @Size(min=2, max=50)
     @Column(name="passWord", length=50, nullable=false, unique=false)
     private String passWord;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="role_id", nullable=false)
     private Role rol;

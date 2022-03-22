@@ -2,6 +2,7 @@ package controllers;
 
 import entities.Role;
 import entities.Trainer;
+import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +38,12 @@ public class TrainerController {
     }
 
     @PostMapping("/admin/saveTrainer")
-    public String saveTrainer(@ModelAttribute("trainer") Trainer trainer) {
+    public String saveTrainer( @Valid @ModelAttribute("trainer") Trainer trainer,BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "newTrainer";
+        }
+
         Role role = roleService.getRoleById(3L);
         trainer.setRole(role);
         trainerService.RsaveTrainer(trainer);
