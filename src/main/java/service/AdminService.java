@@ -12,11 +12,17 @@ public class AdminService {
     @Autowired
     private IAdmin adminDAO;
 
+
     public void save(Admin admin){
         adminDAO.saveAdmin(admin);
     }
 
     public void delete(Long id){
         adminDAO.deleteAdmin(id);
+    }
+
+    public Boolean isLoged(String email, String passWord){
+
+        return adminDAO.login(email,passWord);
     }
 }
