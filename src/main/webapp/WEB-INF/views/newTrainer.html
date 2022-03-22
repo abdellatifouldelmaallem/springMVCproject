@@ -15,7 +15,7 @@
     <hr>
     <h2>Save trainer</h2>
 
-    <form action="#" th:action="@{/saveTrainer}" th:object="${trainer}" method="POST"   >
+    <form action="#" th:action="@{/admin/saveTrainer}" th:object="${trainer}" method="POST"   >
         <label >entre Full Name</label>
         <input type="text" th:field="*{fullName}" placeholder="trainer full name" class="form-control mb-4 col-4">
 
@@ -28,11 +28,7 @@
 
         <label >Role</label>
         <select   class="form-control mb-4 col-4">
-
-            <option th:each="test : ${listRole}"
-                    th:value="${test.getId()}"
-                    th:text="${test.getUser()}"></option>
-
+            <option th:value="trainer">trainer</option>
         </select>
 
         <label >entre Speciality</label>
@@ -46,7 +42,7 @@
 
     <hr>
 
-    <a th:href="@{/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
+    <a th:href="@{/admin/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
 </div>
 </body>
 

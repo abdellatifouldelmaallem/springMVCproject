@@ -15,12 +15,5 @@ public class UserService {
     @Autowired
     private IUser user;
 
-    public void save(User user1){
-        user.saveUser(user1);
-    }
 
-    public List<User> getAllUsers(){
-        List<User> ListUser = user.getAllUser();
-        return ListUser;
-    }
 }

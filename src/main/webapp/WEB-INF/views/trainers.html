@@ -10,7 +10,10 @@
 <body>
 <div class="container mt-5">
     <h2 align="center">Welcome Admin this is the list of trainers</h2>
-    <p align="center"><a th:href="@{/showNewTrainerForm}" class="btn btn-info">Add a Trainer</a></p>
+    <p align="center">
+        <a th:href="@{/admin/showNewTrainerForm}" class="btn btn-info">Add a Trainer</a>
+        <a th:href ="@{/logout}" class=" btn btn-dark float-end">Logout</a>
+    </p>
     <table class="table table-bordered table-sm">
         <thead>
         <tr>
@@ -34,8 +37,8 @@
             <td th:text="${x.speciality}"></td>
             <td th:text="${x.phoneNamber}"></td>
              <td>
-                 <a th:href="@{/showEditTrainerForm/{id}(id=${x.getId()})}" ><i class="btn  btn-warning fa fa-edit" >Edit</i></a>
-                 <a th:href="@{/deleteTrainer/{id}(id=${x.getId()})}" ><i class="btn btn-danger fa fa-remove">Delete</i></a>
+                 <a th:href="@{/admin/showEditTrainerForm/{id}(id=${x.getId()})}" ><i class="btn  btn-warning fa fa-edit" >Edit</i></a>
+                 <a th:href="@{/admin/deleteTrainer/{id}(id=${x.getId()})}" ><i class="btn btn-danger fa fa-remove">Delete</i></a>
              </td>
 
         </tr>

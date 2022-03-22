@@ -1,6 +1,9 @@
 package entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -13,10 +16,18 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
+
+    @Size(min=5, max=40)
     @Column(name="fullName", length=50, nullable=false, unique=false)
     private String fullName;
+
+    @NotBlank(message = "email can not be empty")
+    @Size(min=11, max=40)
     @Column(name="email", length=40, nullable=false, unique=false)
     private String email;
+
+    @NotBlank(message = "password can not be empty")
+    @Size(min=2, max=50)
     @Column(name="passWord", length=50, nullable=false, unique=false)
     private String passWord;
     @ManyToOne(fetch = FetchType.EAGER)

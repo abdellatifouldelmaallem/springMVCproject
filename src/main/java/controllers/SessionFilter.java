@@ -13,8 +13,9 @@ import java.io.IOException;
 public class SessionFilter extends HttpFilter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("filter hhhhhhh");
+        System.out.println("filter INIT");
     }
+
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -28,7 +29,10 @@ public class SessionFilter extends HttpFilter {
         if(loggedIn){
             chain.doFilter(request, response);
         }else {
-            request.getRequestDispatcher("login.html").forward(request, response);
+            response.getWriter().write("404 Error Sorry this page NOT FOUND");
+            response.setStatus(HttpServletResponse.SC_OK);
+
+
         }
     }
 }

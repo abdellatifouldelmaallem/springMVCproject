@@ -4,14 +4,17 @@ import org.hibernate.annotations.ColumnDefault;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
 @DiscriminatorValue(value = "trainerType")
 public class Trainer extends User {
 
+  @Size(min=5, max=40)
     @Column(name="speciality", length=40, nullable=true, unique=false)
     private String speciality;
+  @Size(min=5, max=40)
     @Column(name="phoneNamber", length=40, nullable=true, unique=false)
     private Long phoneNamber;
 

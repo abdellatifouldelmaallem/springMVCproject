@@ -14,7 +14,7 @@
     <hr>
     <h2>update trainer</h2>
 
-    <form  th:action="@{/updateTrainer}" th:object="${trainer}" method="POST">
+    <form  th:action="@{/admin/updateTrainer}" th:object="${trainer}" method="POST">
 
 
         <input type="hidden"  th:value="${trainer.getId()}" name="idUser"/>
@@ -45,7 +45,7 @@
 
     <hr>
 
-    <a th:href="@{/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
+    <a th:href="@{/admin/trainers}" class="btn btn-info col-2"> Back to trainer List</a>
 </div>
 </body>
 
